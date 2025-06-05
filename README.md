@@ -1,30 +1,117 @@
-# ITC-Spiel-DS
+# ITC Salesman Portal
 
-*Automatically synced with your [v0.dev](https://v0.dev) deployments*
+A modern web application for ITC salesmen to manage retailer registrations, verifications, and interactions.
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/purple-block/v0-itc-spiel-retailer)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.dev-black?style=for-the-badge)](https://v0.dev/chat/projects/Soc0h82xWSz)
+## Features
 
-## Overview
+### 1. Authentication & User Management
+- Salesman Login
+- Registration System
+- Profile Management
 
-This repository will stay in sync with your deployed chats on [v0.dev](https://v0.dev).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.dev](https://v0.dev).
+### 2. Retailer Management
+- Retailer Registration
+- QR Code Generation
+- UPI Payment Integration
+- Verification Process
 
-## Deployment
+### 3. UI/UX Features
+- Modern, Responsive Design
+- User-friendly Interface
+- Loading States
+- Success/Error Notifications
 
-Your project is live at:
+## Technical Stack
 
-**[https://vercel.com/purple-block/v0-itc-spiel-retailer](https://vercel.com/purple-block/v0-itc-spiel-retailer)**
+- Next.js
+- TypeScript
+- Tailwind CSS
+- Shadcn UI Components
 
-## Build your app
+## Prerequisites
 
-Continue building your app on:
+- Node.js (v18 or higher)
+- pnpm (Package Manager)
 
-**[https://v0.dev/chat/projects/Soc0h82xWSz](https://v0.dev/chat/projects/Soc0h82xWSz)**
+## Setup Instructions
 
-## How It Works
+1. Clone the repository:
+```bash
+git clone https://github.com/purpleblockai/itc-salesman-portal.git
+cd itc-salesman-portal
+```
 
-1. Create and modify your project using [v0.dev](https://v0.dev)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+2. Install dependencies:
+```bash
+pnpm install
+```
+
+3. Start the development server:
+```bash
+# To run on default port 3000
+pnpm dev
+
+# To run on a specific port (e.g., 3001)
+pnpm dev -- -p 3001
+```
+
+4. Build for production:
+```bash
+pnpm build
+```
+
+## Project Structure
+
+```
+itc-salesman-portal/
+├── app/                    # Next.js app directory
+│   ├── login/             # Login pages
+│   ├── register/          # Registration flow
+│   ├── signup/            # Signup process
+│   ├── verify/            # Verification pages
+│   └── layout.tsx         # Root layout
+├── components/            # Reusable components
+│   ├── ui/               # UI components
+│   └── theme-provider.tsx
+├── public/               # Static assets
+└── styles/              # Global styles
+```
+
+## Development Workflow
+
+1. Create a new branch for your feature:
+```bash
+git checkout -b feature/your-feature-name
+```
+
+2. Make your changes and commit:
+```bash
+git add .
+git commit -m "Description of your changes"
+```
+
+3. Push to GitHub:
+```bash
+git push origin feature/your-feature-name
+```
+
+4. Create a Pull Request on GitHub
+
+## Available Scripts
+
+- `pnpm dev` - Start development server
+- `pnpm build` - Build for production
+- `pnpm start` - Start production server
+- `pnpm lint` - Run linting
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
+
+## License
+
+This project is private and proprietary. All rights reserved.
