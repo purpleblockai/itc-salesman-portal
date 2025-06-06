@@ -93,7 +93,7 @@ export default function RegistrationCompletePage() {
         </div>
 
         <div className="text-center mb-8">
-          <h1 className="text-black text-3xl font-gugi mb-4">Registration Complete!</h1>
+          <h1 className="text-black text-3xl font-gugi mb-4">Registration Successful!</h1>
           <p className="text-black font-colophon">Welcome to Spiel Portal</p>
         </div>
 
