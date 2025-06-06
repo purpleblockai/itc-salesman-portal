@@ -58,7 +58,7 @@ export default function SignupDetailsPage() {
   }
 
   return (
-    <div className="relative flex flex-col min-h-screen bg-black overflow-hidden p-6">
+    <div className="relative flex flex-col min-h-screen bg-white overflow-hidden p-6">
       {/* Background pattern */}
       <div className="absolute bottom-0 left-0 right-0 pointer-events-none overflow-hidden z-0">
         <svg
@@ -124,7 +124,7 @@ export default function SignupDetailsPage() {
       {/* Back button */}
       <button
         onClick={() => router.back()}
-        className="text-white p-2 rounded-full hover:bg-gray-800 transition-colors z-10"
+        className="text-black p-2 rounded-full hover:bg-gray-100 transition-colors z-10"
         aria-label="Go back"
       >
         <ArrowLeft className="w-6 h-6" />
@@ -132,11 +132,11 @@ export default function SignupDetailsPage() {
 
       {/* Main content */}
       <div className="flex-1 flex flex-col mt-12 z-10">
-        <h1 className="text-white text-3xl font-gugi mb-8">Sign Up</h1>
+        <h1 className="text-black text-3xl font-gugi mb-8">Enter Details</h1>
 
         <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
           <div className="flex flex-col space-y-2">
-            <label htmlFor="fullName" className="text-white font-colophon font-medium">
+            <label htmlFor="fullName" className="text-black font-colophon font-medium">
               Full Name
             </label>
             <input
@@ -145,12 +145,12 @@ export default function SignupDetailsPage() {
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
               placeholder="John Doe"
-              className="bg-[#222222] text-white p-4 rounded-lg border border-gray-700 focus:outline-none focus:border-[#B275F7] font-colophon font-normal"
+              className="bg-white text-black p-4 rounded-lg border border-gray-300 focus:outline-none focus:border-[#B275F7] font-colophon font-normal"
             />
           </div>
 
           <div className="flex flex-col space-y-2">
-            <label htmlFor="wdCode" className="text-white font-colophon font-medium">
+            <label htmlFor="wdCode" className="text-black font-colophon font-medium">
               WD Code
             </label>
             <input
@@ -159,12 +159,12 @@ export default function SignupDetailsPage() {
               value={wdCode}
               onChange={(e) => setWdCode(e.target.value)}
               placeholder="XXXXXX"
-              className="bg-[#222222] text-white p-4 rounded-lg border border-gray-700 focus:outline-none focus:border-[#B275F7] font-colophon font-normal"
+              className="bg-white text-black p-4 rounded-lg border border-gray-300 focus:outline-none focus:border-[#B275F7] font-colophon font-normal"
             />
           </div>
 
           <div className="flex flex-col space-y-2">
-            <label htmlFor="password" className="text-white font-colophon font-medium">
+            <label htmlFor="password" className="text-black font-colophon font-medium">
               Password
             </label>
             <div className="relative">
@@ -174,12 +174,12 @@ export default function SignupDetailsPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="XXXXXX"
-                className="bg-[#222222] text-white p-4 rounded-lg border border-gray-700 focus:outline-none focus:border-[#B275F7] w-full font-colophon font-normal"
+                className="bg-white text-black p-4 rounded-lg border border-gray-300 focus:outline-none focus:border-[#B275F7] w-full font-colophon font-normal"
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400"
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-600"
                 aria-label={showPassword ? "Hide password" : "Show password"}
               >
                 {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
@@ -188,7 +188,7 @@ export default function SignupDetailsPage() {
           </div>
 
           <div className="flex flex-col space-y-2">
-            <label htmlFor="confirmPassword" className="text-white font-colophon font-medium">
+            <label htmlFor="confirmPassword" className="text-black font-colophon font-medium">
               Confirm Password
             </label>
             <div className="relative">
@@ -198,12 +198,12 @@ export default function SignupDetailsPage() {
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 placeholder="XXXXXX"
-                className="bg-[#222222] text-white p-4 rounded-lg border border-gray-700 focus:outline-none focus:border-[#B275F7] w-full font-colophon font-normal"
+                className="bg-white text-black p-4 rounded-lg border border-gray-300 focus:outline-none focus:border-[#B275F7] w-full font-colophon font-normal"
               />
               <button
                 type="button"
                 onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400"
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-600"
                 aria-label={showConfirmPassword ? "Hide password" : "Show password"}
               >
                 {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
@@ -217,9 +217,9 @@ export default function SignupDetailsPage() {
               id="acceptPolicy"
               checked={acceptPolicy}
               onChange={(e) => setAcceptPolicy(e.target.checked)}
-              className="w-5 h-5 rounded-full bg-[#222222] border border-gray-700 focus:outline-none focus:ring-2 focus:ring-[#B275F7] text-[#B275F7]"
+              className="w-5 h-5 rounded-full bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#B275F7] text-[#B275F7]"
             />
-            <label htmlFor="acceptPolicy" className="ml-2 text-white font-colophon font-normal">
+            <label htmlFor="acceptPolicy" className="ml-2 text-black font-colophon font-normal">
               By continuing you accept our{" "}
               <Link href="#" className="text-[#B275F7]">
                 Privacy Policy
@@ -237,7 +237,7 @@ export default function SignupDetailsPage() {
         </form>
 
         <div className="mt-6 text-center">
-          <p className="text-white font-colophon font-normal">
+          <p className="text-black font-colophon font-normal">
             Already has an account?{" "}
             <Link href="/login" className="text-[#B275F7] font-gugi">
               Log In

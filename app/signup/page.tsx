@@ -4,19 +4,23 @@ import type React from "react"
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-import { ArrowLeft } from "lucide-react"
+import { ArrowLeft, Eye, EyeOff } from "lucide-react"
 import Link from "next/link"
 
 export default function SignupPage() {
   const router = useRouter()
   const [phoneNumber, setPhoneNumber] = useState("")
   const [isLoading, setIsLoading] = useState(false)
+  const [showPassword, setShowPassword] = useState(false)
+  const [password, setPassword] = useState("")
+  const [phoneError, setPhoneError] = useState("")
 
   const handleGetOTP = async (e: React.FormEvent) => {
     e.preventDefault()
 
     if (!phoneNumber) {
       // Show validation error
+      setPhoneError("Please enter a valid phone number")
       return
     }
 
@@ -32,8 +36,14 @@ export default function SignupPage() {
     }, 1500)
   }
 
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value
+    setPhoneNumber(value)
+    setPhoneError("")
+  }
+
   return (
-    <div className="relative flex flex-col min-h-screen bg-black overflow-hidden p-6">
+    <div className="relative flex flex-col min-h-screen bg-white overflow-hidden p-6">
       {/* Background pattern */}
       <div className="absolute bottom-0 left-0 right-0 pointer-events-none overflow-hidden z-0">
         <svg
@@ -99,7 +109,7 @@ export default function SignupPage() {
       {/* Back button */}
       <button
         onClick={() => router.back()}
-        className="text-white p-2 rounded-full hover:bg-gray-800 transition-colors z-10"
+        className="text-black p-2 rounded-full hover:bg-gray-100 transition-colors z-10"
         aria-label="Go back"
       >
         <ArrowLeft className="w-6 h-6" />
@@ -107,35 +117,67 @@ export default function SignupPage() {
 
       {/* Main content */}
       <div className="flex-1 flex flex-col mt-12 z-10">
-        <h1 className="text-white text-3xl font-gugi mb-8">Sign Up</h1>
+        <h1 className="text-black text-3xl font-gugi mb-8">Sign Up</h1>
 
         <form onSubmit={handleGetOTP} className="flex flex-col space-y-6">
           <div className="flex flex-col space-y-2">
-            <label htmlFor="phoneNumber" className="text-white font-colophon font-medium">
-              Enter Mobile Number
+            <label htmlFor="phoneNumber" className="text-black font-colophon font-medium">
+              Phone Number
             </label>
-            <input
-              id="phoneNumber"
-              type="tel"
-              value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
-              placeholder="Mobile No."
-              className="bg-[#222222] text-white p-4 rounded-lg border border-gray-700 focus:outline-none focus:border-[#B275F7] font-colophon font-normal"
-            />
+            <div className="relative">
+              <div className="absolute left-0 top-0 bottom-0 flex items-center pl-4 text-gray-600">
+                <span className="text-sm">+91</span>
+              </div>
+              <input
+                id="phoneNumber"
+                type="tel"
+                value={phoneNumber}
+                onChange={handlePhoneChange}
+                placeholder="Enter 10 digit number"
+                className="bg-white w-full text-black pl-16 pr-4 py-4 rounded-lg border border-gray-300 focus:outline-none focus:border-[#B275F7] font-colophon font-normal"
+              />
+            </div>
+            {phoneError && (
+              <span className="text-red-500 text-sm mt-1">{phoneError}</span>
+            )}
+          </div>
+
+          <div className="flex flex-col space-y-2">
+            <label htmlFor="password" className="text-black font-colophon font-medium">
+              Password
+            </label>
+            <div className="relative">
+              <input
+                id="password"
+                type={showPassword ? "text" : "password"}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="XXXXXX"
+                className="bg-white text-black p-4 rounded-lg border border-gray-300 focus:outline-none focus:border-[#B275F7] w-full font-colophon font-normal"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-600"
+                aria-label={showPassword ? "Hide password" : "Show password"}
+              >
+                {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+              </button>
+            </div>
           </div>
 
           <button
             type="submit"
             disabled={isLoading}
-            className="bg-[#B275F7] text-black py-4 px-6 rounded-full font-gugi text-lg mt-6 disabled:opacity-70"
+            className="bg-[#B275F7] text-white py-4 px-6 rounded-full font-gugi text-lg mt-6 disabled:opacity-70 hover:bg-[#9B62E0]"
           >
-            {isLoading ? "Processing..." : "Get OTP"}
+            {isLoading ? "Signing up..." : "Sign Up"}
           </button>
         </form>
 
         <div className="mt-6 text-center">
-          <p className="text-white font-colophon font-normal">
-            Already has an account?{" "}
+          <p className="text-black font-colophon font-normal">
+            Already have an account?{" "}
             <Link href="/login" className="text-[#B275F7] font-gugi">
               Log In
             </Link>

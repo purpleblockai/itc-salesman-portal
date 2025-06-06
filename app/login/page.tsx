@@ -6,37 +6,49 @@ import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { ArrowLeft, Eye, EyeOff } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 
 export default function LoginPage() {
   const router = useRouter()
-  const [phoneOrCode, setPhoneOrCode] = useState("")
+  const [phoneNumber, setPhoneNumber] = useState("")
   const [password, setPassword] = useState("")
   const [showPassword, setShowPassword] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
+  const [phoneError, setPhoneError] = useState("")
+
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.replace(/\D/g, '') // Only allow digits
+    if (value.length <= 10) {
+      setPhoneNumber(value)
+      if (value.length === 10) {
+        setPhoneError("")
+      }
+    }
+  }
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
 
-    if (!phoneOrCode || !password) {
-      // Show validation error
+    if (!phoneNumber || !password) {
+      setPhoneError("Please fill in all fields")
+      return
+    }
+
+    if (phoneNumber.length !== 10) {
+      setPhoneError("Please enter a 10-digit mobile number")
       return
     }
 
     setIsLoading(true)
-
-    // Store the phone number in sessionStorage
-    sessionStorage.setItem("loginPhone", phoneOrCode)
-
-    // Simulate API call
+    sessionStorage.setItem("loginPhone", phoneNumber)
     setTimeout(() => {
       setIsLoading(false)
-      // Redirect to OTP verification after login
       router.push("/verify?flow=login")
     }, 1500)
   }
 
   return (
-    <div className="relative flex flex-col min-h-screen bg-black overflow-hidden p-6">
+    <div className="relative flex flex-col min-h-screen bg-white overflow-hidden p-6">
       {/* Background pattern */}
       <div className="absolute bottom-0 left-0 right-0 pointer-events-none overflow-hidden z-0">
         <svg
@@ -102,7 +114,7 @@ export default function LoginPage() {
       {/* Back button */}
       <button
         onClick={() => router.back()}
-        className="text-white p-2 rounded-full hover:bg-gray-800 transition-colors z-10"
+        className="text-black p-2 rounded-full hover:bg-gray-100 transition-colors z-10"
         aria-label="Go back"
       >
         <ArrowLeft className="w-6 h-6" />
@@ -110,25 +122,33 @@ export default function LoginPage() {
 
       {/* Main content */}
       <div className="flex-1 flex flex-col mt-12 z-10">
-        <h1 className="text-white text-3xl font-gugi mb-8">Log In</h1>
+        <h1 className="text-black text-3xl font-gugi mb-8">Log In</h1>
 
         <form onSubmit={handleLogin} className="flex flex-col space-y-6">
           <div className="flex flex-col space-y-2">
-            <label htmlFor="phoneOrCode" className="text-white font-colophon font-medium">
-              Phone Number / Employee Code
+            <label htmlFor="phoneNumber" className="text-black font-colophon font-medium">
+              Phone Number
             </label>
-            <input
-              id="phoneOrCode"
-              type="text"
-              value={phoneOrCode}
-              onChange={(e) => setPhoneOrCode(e.target.value)}
-              placeholder="XXXXXX"
-              className="bg-[#222222] text-white p-4 rounded-lg border border-gray-700 focus:outline-none focus:border-[#B275F7] font-colophon font-normal"
-            />
+            <div className="relative">
+              <div className="absolute left-0 top-0 bottom-0 flex items-center pl-4 text-gray-600">
+                <span className="text-sm">+91</span>
+              </div>
+              <input
+                id="phoneNumber"
+                type="tel"
+                value={phoneNumber}
+                onChange={handlePhoneChange}
+                placeholder="Enter 10 digit number"
+                className="bg-white w-full text-black pl-16 pr-4 py-4 rounded-lg border border-gray-300 focus:outline-none focus:border-[#B275F7] font-colophon font-normal"
+              />
+            </div>
+            {phoneError && (
+              <span className="text-red-500 text-sm mt-1">{phoneError}</span>
+            )}
           </div>
 
           <div className="flex flex-col space-y-2">
-            <label htmlFor="password" className="text-white font-colophon font-medium">
+            <label htmlFor="password" className="text-black font-colophon font-medium">
               Password
             </label>
             <div className="relative">
@@ -138,12 +158,12 @@ export default function LoginPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="XXXXXX"
-                className="bg-[#222222] text-white p-4 rounded-lg border border-gray-700 focus:outline-none focus:border-[#B275F7] w-full font-colophon font-normal"
+                className="bg-white text-black p-4 rounded-lg border border-gray-300 focus:outline-none focus:border-[#B275F7] w-full font-colophon font-normal"
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400"
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-600"
                 aria-label={showPassword ? "Hide password" : "Show password"}
               >
                 {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
@@ -154,14 +174,14 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={isLoading}
-            className="bg-[#B275F7] text-black py-4 px-6 rounded-full font-gugi text-lg mt-6 disabled:opacity-70"
+            className="bg-[#B275F7] text-white py-4 px-6 rounded-full font-gugi text-lg mt-6 disabled:opacity-70"
           >
             {isLoading ? "Logging in..." : "Log In"}
           </button>
         </form>
 
         <div className="mt-6 text-center">
-          <p className="text-white font-colophon font-normal">
+          <p className="text-black font-colophon font-normal">
             Don&apos;t have an account?{" "}
             <Link href="/signup" className="text-[#B275F7] font-gugi">
               Sign Up

@@ -33,7 +33,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${poppins.variable} ${gugi.variable} font-colophon`}>{children}</body>
+      <body className="bg-white text-black min-h-screen">
+        {children}
+      </body>
     </html>
   )
 }

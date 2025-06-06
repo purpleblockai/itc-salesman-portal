@@ -73,7 +73,7 @@ export default function VerifyPage() {
   }
 
   return (
-    <div className="relative flex flex-col min-h-screen bg-black overflow-hidden p-6">
+    <div className="relative flex flex-col min-h-screen bg-white overflow-hidden p-6">
       {/* Background pattern */}
       <div className="absolute bottom-0 left-0 right-0 pointer-events-none overflow-hidden z-0">
         <svg
@@ -139,7 +139,7 @@ export default function VerifyPage() {
       {/* Back button */}
       <button
         onClick={() => router.back()}
-        className="text-white p-2 rounded-full hover:bg-gray-800 transition-colors z-10"
+        className="text-black p-2 rounded-full hover:bg-gray-100 transition-colors z-10"
         aria-label="Go back"
       >
         <ArrowLeft className="w-6 h-6" />
@@ -147,9 +147,9 @@ export default function VerifyPage() {
 
       {/* Main content */}
       <div className="flex-1 flex flex-col mt-12 z-10">
-        <h1 className="text-white text-3xl font-gugi mb-8">OTP Verification</h1>
+        <h1 className="text-black text-3xl font-gugi mb-8">Verify OTP</h1>
 
-        <p className="text-white mb-6 font-colophon font-normal">
+        <p className="text-black mb-6 font-colophon font-normal">
           We sent a code to your number <span className="text-[#B275F7]">{phoneNumber}</span>
         </p>
 
@@ -164,7 +164,7 @@ export default function VerifyPage() {
                 onChange={(e) => handleChange(index, e.target.value)}
                 onKeyDown={(e) => handleKeyDown(index, e)}
                 maxLength={1}
-                className="bg-[#222222] text-white text-center w-16 h-16 rounded-lg border border-gray-700 focus:outline-none focus:border-[#B275F7] text-xl font-colophon font-medium"
+                className="bg-white text-black text-center w-16 h-16 rounded-lg border border-gray-300 focus:outline-none focus:border-[#B275F7] text-xl font-colophon font-medium"
               />
             ))}
           </div>
@@ -172,14 +172,14 @@ export default function VerifyPage() {
           <button
             type="submit"
             disabled={isLoading}
-            className="bg-[#B275F7] text-black py-4 px-6 rounded-full font-gugi text-lg mt-6 disabled:opacity-70"
+            className="bg-[#B275F7] text-white py-4 px-6 rounded-full font-gugi text-lg mt-6 disabled:opacity-70 hover:bg-[#9B62E0]"
           >
             {isLoading ? "Verifying..." : "Confirm"}
           </button>
         </form>
 
         <div className="mt-6 text-center">
-          <p className="text-white font-colophon font-normal">
+          <p className="text-black font-colophon font-normal">
             Already has an account?{" "}
             <Link href="/login" className="text-[#B275F7] font-gugi">
               Log In

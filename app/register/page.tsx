@@ -2,13 +2,23 @@
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
+import { ArrowLeft } from "lucide-react"
 
 export default function RegisterPage() {
   const router = useRouter()
   const [isSignUp, setIsSignUp] = useState(false)
 
   return (
-    <div className="relative flex flex-col justify-between min-h-screen bg-black overflow-hidden p-6">
+    <div className="relative flex flex-col min-h-screen bg-white overflow-hidden p-6">
+      {/* Back button */}
+      <button
+        onClick={() => router.back()}
+        className="text-black p-2 rounded-full hover:bg-gray-100 transition-colors z-10"
+        aria-label="Go back"
+      >
+        <ArrowLeft className="w-6 h-6" />
+      </button>
+
       {/* Background pattern */}
       <div className="absolute bottom-0 left-0 right-0 pointer-events-none overflow-hidden z-0">
         <svg
@@ -78,9 +88,6 @@ export default function RegisterPage() {
           <h2 className="text-[#B275F7] text-5xl font-gugi">Portal</h2>
         </div>
       </div>
-
-      {/* Title */}
-      {/* Title section removed */}
 
       {/* Auth buttons section */}
       <div className="flex flex-col space-y-4 mb-12 z-10">

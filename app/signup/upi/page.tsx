@@ -35,7 +35,7 @@ export default function SignupUpiPage() {
   }
 
   return (
-    <div className="relative flex flex-col min-h-screen bg-black overflow-hidden p-6">
+    <div className="relative flex flex-col min-h-screen bg-white overflow-hidden p-6">
       {/* Background pattern */}
       <div className="absolute bottom-0 left-0 right-0 pointer-events-none overflow-hidden z-0">
         <svg
@@ -101,7 +101,7 @@ export default function SignupUpiPage() {
       {/* Back button */}
       <button
         onClick={() => router.back()}
-        className="text-white p-2 rounded-full hover:bg-gray-800 transition-colors z-10"
+        className="text-black p-2 rounded-full hover:bg-gray-100 transition-colors z-10"
         aria-label="Go back"
       >
         <ArrowLeft className="w-6 h-6" />
@@ -109,12 +109,12 @@ export default function SignupUpiPage() {
 
       {/* Main content */}
       <div className="flex-1 flex flex-col mt-12 z-10">
-        <h1 className="text-[#B275F7] text-3xl font-gugi mb-4">Almost Done!!</h1>
-        <p className="text-white mb-8 font-colophon font-normal">Please enter your valid UPI ID here</p>
+        <h1 className="text-black text-3xl font-gugi mb-4">Almost Done!!</h1>
+        <p className="text-black mb-8 font-colophon font-normal">Please enter your valid UPI ID here</p>
 
         <form onSubmit={handleSubmit} className="flex flex-col space-y-6">
           <div className="flex flex-col space-y-2">
-            <label htmlFor="upiId" className="text-white font-colophon font-medium">
+            <label htmlFor="upiId" className="text-black font-colophon font-medium">
               Enter UPI ID here
             </label>
             <input
@@ -123,14 +123,14 @@ export default function SignupUpiPage() {
               value={upiId}
               onChange={(e) => setUpiId(e.target.value)}
               placeholder="example@ybl"
-              className="bg-[#222222] text-white p-4 rounded-lg border border-gray-700 focus:outline-none focus:border-[#B275F7] font-colophon font-normal"
+              className="bg-white text-black p-4 rounded-lg border border-gray-300 focus:outline-none focus:border-[#B275F7] font-colophon font-normal"
             />
           </div>
 
           <button
             type="submit"
             disabled={isLoading}
-            className="bg-[#B275F7] text-black py-4 px-6 rounded-full font-gugi text-lg mt-6 disabled:opacity-70"
+            className="bg-[#B275F7] text-white py-4 px-6 rounded-full font-gugi text-lg mt-6 disabled:opacity-70 hover:bg-[#9B62E0]"
           >
             {isLoading ? "Processing..." : "Confirm"}
           </button>

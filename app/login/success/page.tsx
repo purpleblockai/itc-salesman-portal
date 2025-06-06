@@ -1,7 +1,7 @@
 "use client"
 
 import { useRouter } from "next/navigation"
-import { ArrowRight, Check, ArrowLeft } from "lucide-react"
+import { ArrowRight, ArrowLeft, Check } from "lucide-react"
 
 export default function LoginSuccessPage() {
   const router = useRouter()
@@ -11,7 +11,7 @@ export default function LoginSuccessPage() {
   }
 
   return (
-    <div className="relative flex flex-col min-h-screen bg-black overflow-hidden p-6">
+    <div className="relative flex flex-col min-h-screen bg-white overflow-hidden p-6">
       {/* Background pattern */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
         <svg
@@ -77,7 +77,7 @@ export default function LoginSuccessPage() {
       {/* Back button */}
       <button
         onClick={() => router.back()}
-        className="text-white p-2 rounded-full hover:bg-gray-800 transition-colors z-10"
+        className="text-black p-2 rounded-full hover:bg-gray-100 transition-colors z-10"
         aria-label="Go back"
       >
         <ArrowLeft className="w-6 h-6" />
@@ -85,25 +85,23 @@ export default function LoginSuccessPage() {
 
       {/* Main content */}
       <div className="flex-1 flex flex-col items-center justify-center z-10">
-        {/* Success icon */}
-        <div className="bg-[#B275F7] w-32 h-32 rounded-full flex items-center justify-center mb-8">
-          <Check className="w-16 h-16 text-black" />
+        {/* Success Icon */}
+        <div className="mb-8">
+          <div className="w-24 h-24 bg-[#B275F7] rounded-full flex items-center justify-center">
+            <Check className="w-12 h-12 text-white" />
+          </div>
         </div>
 
-        {/* Success message */}
-        <h1 className="text-[#B275F7] text-4xl font-gugi text-center mb-16">
-          Login
-          <br />
-          Successful!
-        </h1>
+        <div className="text-center mb-8">
+          <h1 className="text-black text-3xl font-gugi mb-4">Login Successful!</h1>
+          <p className="text-black font-colophon">Welcome back to Spiel Portal</p>
+        </div>
 
-        {/* Continue button */}
         <button
           onClick={handleContinue}
-          className="bg-[#B275F7] w-16 h-16 rounded-full flex items-center justify-center shadow-lg focus:outline-none focus:ring-2 focus:ring-[#B275F7]"
-          aria-label="Continue to QR code"
+          className="bg-[#B275F7] text-white py-4 px-6 rounded-full font-gugi text-lg w-full max-w-md hover:bg-[#9B62E0] flex items-center justify-center"
         >
-          <ArrowRight className="w-6 h-6 text-black" />
+          Continue <ArrowRight className="w-5 h-5 ml-2" />
         </button>
       </div>
 
